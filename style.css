@@ -1,0 +1,215 @@
+/* Minimal, mobile-first “link-in-bio” style */
+
+:root {
+  color-scheme: dark;
+  --bg: #070712;
+  --card: #0e0f1b;
+  --text: #f4f6ff;
+  --muted: rgba(244, 246, 255, 0.72);
+  --border: rgba(244, 246, 255, 0.14);
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  --primary: #8b5cf6;
+  --primary2: #c084fc;
+  --radius: 18px;
+}
+
+/* Intentionally always dark (consistent brand). */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.5;
+  color: var(--text);
+  background: radial-gradient(1000px 700px at 20% 10%, rgba(139, 92, 246, 0.26), transparent 55%),
+    radial-gradient(900px 700px at 90% 30%, rgba(192, 132, 252, 0.18), transparent 58%),
+    var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+}
+
+.card {
+  width: min(560px, 100%);
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px 18px;
+  backdrop-filter: blur(10px);
+}
+
+header {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid color-mix(in srgb, var(--border) 40%, var(--primary) 60%);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35),
+    0 0 0 6px rgba(139, 92, 246, 0.12);
+}
+
+.name {
+  font-size: 28px;
+  font-weight: 720;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.splitHint {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  display: grid;
+  gap: 6px;
+}
+
+.splitHint p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.splitHint strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.blurb {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.links {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--border) 40%, var(--primary) 60%);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.btn:active {
+  transform: translateY(0px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--primary) 70%, transparent);
+  outline-offset: 3px;
+}
+
+.btnPrimary {
+  border-color: color-mix(in srgb, var(--border) 10%, var(--primary) 90%);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 65%, transparent),
+    color-mix(in srgb, var(--primary2) 45%, transparent)
+  );
+}
+
+.btnSecondary {
+  border-color: color-mix(in srgb, var(--border) 55%, var(--primary) 45%);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btnSecondary:hover {
+  border-color: color-mix(in srgb, var(--border) 30%, var(--primary2) 70%);
+}
+
+.btnTitle {
+  display: grid;
+  gap: 2px;
+}
+
+.btnTitle strong {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.btnTitle span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.arrow {
+  flex: none;
+  opacity: 0.92;
+}
+
+.fineprint {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+footer a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--muted) 70%, transparent);
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+  .btn:hover {
+    transform: none;
+  }
+}
